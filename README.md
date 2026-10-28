@@ -1,6 +1,6 @@
 # virt-provision
 
-Opentofu (Terraform) IaC for deploying Debian 13 VMs on [https://github.com/ataylor-us/virt-infra](https://github.com/ataylor-us/virt-infra)
+Opentofu (Terraform) IaC for deploying Debian 13 VMs on [virt-infra](https://github.com/ataylor-us/virt-infra)
 
 ```bash
 tofu init
