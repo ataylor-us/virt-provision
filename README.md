@@ -3,6 +3,7 @@
 Opentofu (Terraform) IaC for deploying Debian 13 VMs on [virt-infra](https://github.com/ataylor-us/virt-infra)
 
 ```bash
+direnv allow
 tofu init
 tofu plan
 tofu apply
