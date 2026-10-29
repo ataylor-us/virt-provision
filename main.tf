@@ -20,7 +20,7 @@ provider "libvirt" {
 # pool defaults to "default"
 locals {
   vms = {
-    deploy = { vcpu = 2, memory_mib = 2048, disk_gib = 20 }
+    dev4 = { vcpu = 2, memory_mib = 2048, disk_gib = 20, bridge = "br10" }
   }
 }
 
