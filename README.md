@@ -13,6 +13,3 @@ tofu apply
 ```
 
 Secrets come from `pass` via `.envrc`, which is loaded using [direnv](https://github.com/direnv/direnv).
-
-VMs are declared in `locals.vms` in `main.tf`.
-
