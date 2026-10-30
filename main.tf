@@ -18,6 +18,7 @@ provider "libvirt" {
 # One entry per VM
 # bridge defaults to "br0"
 # pool defaults to "default"
+# autostart defaults to false
 locals {
   vms = {
     dev4 = { vcpu = 2, memory_mib = 2048, disk_gib = 20, bridge = "br10" }
@@ -116,7 +117,7 @@ resource "libvirt_domain" "vm" {
   memory_unit = "MiB"
   vcpu        = each.value.vcpu
   type        = "kvm"
-  autostart   = true
+  autostart   = try(each.value.autostart, false)
 
   cpu = {
     mode = "host-passthrough"
