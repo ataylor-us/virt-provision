@@ -19,9 +19,17 @@ provider "libvirt" {
 # bridge defaults to "br0"
 # pool defaults to "default"
 # autostart defaults to false
+#
+# Adding existing = true attaches <name>.qcow2 in the *default* pool, for migrated VMs
 locals {
   vms = {
-    dev4 = { vcpu = 2, memory_mib = 2048, disk_gib = 20, bridge = "br10" }
+    dev1     = { vcpu = 6, memory_mib = 2048, bridge = "br10", existing = true }
+    dev2     = { vcpu = 2, memory_mib = 4096, bridge = "br10", existing = true }
+    dev3     = { vcpu = 2, memory_mib = 2048, bridge = "br10", autostart = true, existing = true }
+    exit     = { vcpu = 1, memory_mib = 512, autostart = true, existing = true }
+    bog      = { vcpu = 2, memory_mib = 2048, bridge = "br11", autostart = true, existing = true }
+    frontend = { vcpu = 6, memory_mib = 8192, autostart = true, existing = true }
+    hub      = { vcpu = 8, memory_mib = 4096, autostart = true, existing = true }
   }
 }
 
@@ -52,7 +60,7 @@ resource "libvirt_volume" "debian_base" {
 }
 
 resource "libvirt_volume" "disk" {
-  for_each = local.vms
+  for_each = { for k, v in local.vms : k => v if !try(v.existing, false) }
 
   name = "${each.key}.qcow2"
   pool = try(each.value.pool, "default")
@@ -87,6 +95,8 @@ resource "libvirt_cloudinit_disk" "seed" {
         ssh_authorized_keys:
           - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFKo4XAoO9Z4jjpOndjKMQAtR8IRQHbn7m1WaI53Ynho
     ssh_pwauth: false
+    # Prevents keys from getting nuked from migrated VMs
+    ssh_deletekeys: false
     timezone: America/New_York
   EOF
 
@@ -141,7 +151,7 @@ resource "libvirt_domain" "vm" {
       {
         source = {
           file = {
-            file = libvirt_volume.disk[each.key].path
+            file = try(each.value.existing, false) ? "/var/lib/libvirt/images/${each.key}.qcow2" : libvirt_volume.disk[each.key].path
           }
         }
         target = {
