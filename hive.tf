@@ -37,7 +37,8 @@ resource "libvirt_domain" "hive" {
           bus = "virtio"
         }
         driver = {
-          type = "qcow2"
+          type    = "qcow2"
+          discard = "unmap"
         }
       }
     ]

@@ -159,7 +159,8 @@ resource "libvirt_domain" "vm" {
           bus = "virtio"
         }
         driver = {
-          type = "qcow2"
+          type    = "qcow2"
+          discard = "unmap"
         }
       },
       {
