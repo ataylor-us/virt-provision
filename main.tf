@@ -26,6 +26,7 @@ locals {
     dev1     = { vcpu = 2, memory_mib = 4096, disk_gib = 32, bridge = "br9", autostart = true }
     dev2     = { vcpu = 2, memory_mib = 4096, bridge = "br10", autostart = true, existing = true }
     dev3     = { vcpu = 2, memory_mib = 2048, bridge = "br10", autostart = true, existing = true }
+    dev4     = { vcpu = 2, memory_mib = 2048, disk_gib = 20, autostart = true }
     bog      = { vcpu = 2, memory_mib = 2048, bridge = "br11", autostart = true, existing = true }
     exit     = { vcpu = 1, memory_mib = 512, autostart = true, existing = true }
     frontend = { vcpu = 6, memory_mib = 8192, autostart = true, existing = true }
