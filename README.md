@@ -1,8 +1,8 @@
 # virt-provision
 
-Opentofu (Terraform) IaC for deploying VMs
+Opentofu (Terraform) IaC for deploying VMs on [virt-infra](https://github.com/ataylor-us/virt-infra)
 
-+ `main.tf` standardizes on Debian 13 VMs on [virt-infra](https://github.com/ataylor-us/virt-infra)
++ `main.tf` is the bulk of my VMs, which include migrated VMs. New VMs default to Debian 13
 + `haos.tf` is my [Home Assistant Operating System](https://developers.home-assistant.io/docs/operating-system/) VM, migrated from another box.
 + `hive.tf` is my puppet/OpenVox server VM, migrated from another box.
 
