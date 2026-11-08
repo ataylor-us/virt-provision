@@ -14,3 +14,7 @@ tofu apply
 ```
 
 Secrets come from `pass` via `.envrc`, which is loaded using [direnv](https://github.com/direnv/direnv).
+
+## Versions
+
+[Renovate](https://github.com/renovatebot/renovate) is used to make PRs for the OpenTofu provider.
