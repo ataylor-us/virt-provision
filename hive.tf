@@ -1,4 +1,4 @@
-# (Legacy?) AlmaLinux 10 puppet/openbox VM
+# (Legacy?) AlmaLinux 10 puppet/OpenVox VM
 resource "libvirt_domain" "hive" {
   name        = "hive"
   memory      = 6144
