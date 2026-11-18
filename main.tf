@@ -23,7 +23,8 @@ provider "libvirt" {
 # Adding existing = true attaches <name>.qcow2 in the *default* pool, for migrated VMs
 locals {
   vms = {
-    # dev1     = { vcpu = 2, memory_mib = 4096, disk_gib = 32, bridge = "br9" }
+    dev0     = { vcpu = 2, memory_mib = 2048, disk_gib = 20, autostart = true }
+    # dev1    = { vcpu = 2, memory_mib = 4096, disk_gib = 32, bridge = "br9" }
     dev2     = { vcpu = 6, memory_mib = 10240, bridge = "br10", autostart = true, existing = true }
     dev3     = { vcpu = 2, memory_mib = 2048, bridge = "br13", autostart = true, existing = true }
     # dev4     = { vcpu = 2, memory_mib = 4096, disk_gib = 20, bridge = "br12" }
