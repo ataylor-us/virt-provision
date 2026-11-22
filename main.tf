@@ -30,7 +30,7 @@ locals {
     # dev4     = { vcpu = 2, memory_mib = 4096, disk_gib = 20, bridge = "br12" }
     bog      = { vcpu = 2, memory_mib = 2048, bridge = "br11", autostart = true, existing = true }
     exit     = { vcpu = 1, memory_mib = 512, autostart = true, existing = true }
-    frontend = { vcpu = 6, memory_mib = 8192, autostart = true, existing = true }
+    frontend = { vcpu = 6, memory_mib = 10240, autostart = true, existing = true }
     hub      = { vcpu = 8, memory_mib = 4096, autostart = true, existing = true }
   }
 }
@@ -118,6 +118,10 @@ resource "libvirt_volume" "seed" {
     content = {
       url = libvirt_cloudinit_disk.seed[each.key].path
     }
+  }
+
+  lifecycle {
+    ignore_changes = [create]
   }
 }
 

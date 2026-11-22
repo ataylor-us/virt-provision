@@ -5,6 +5,6 @@ repos:
       - id: gitleaks
         name: Detect hardcoded secrets
         description: Detect hardcoded secrets using Gitleaks
-        entry: gitleaks git --pre-commit --redact --staged --verbose
+        entry: gitleaks protect --staged --redact --verbose
         language: system
         pass_filenames: false
