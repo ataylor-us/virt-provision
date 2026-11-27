@@ -46,7 +46,8 @@ resource "libvirt_domain" "haos" {
           bus = "virtio"
         }
         driver = {
-          type = "qcow2"
+          type    = "qcow2"
+          discard = "unmap"
         }
       }
     ]
@@ -91,6 +92,11 @@ resource "libvirt_domain" "haos" {
         backend = { random = "/dev/urandom" }
       }
     ]
+
+    mem_balloon = {
+      model               = "virtio"
+      free_page_reporting = "on"
+    }
   }
 
   running = true

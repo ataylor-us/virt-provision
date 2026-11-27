@@ -83,6 +83,11 @@ resource "libvirt_domain" "hive" {
         backend = { random = "/dev/urandom" }
       }
     ]
+
+    mem_balloon = {
+      model               = "virtio"
+      free_page_reporting = "on"
+    }
   }
 
   running = true
