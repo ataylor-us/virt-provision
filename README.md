@@ -1,6 +1,6 @@
 # virt-provision
 
-Opentofu (Terraform) IaC for deploying VMs on [virt-infra](https://github.com/ataylor-us/virt-infra)
+Opentofu (Terraform) IaC for provisioning VMs on [virt-infra](https://github.com/ataylor-us/virt-infra) hypervisor(s).
 
 + `main.tf` is the bulk of my VMs, which include migrated VMs. New VMs default to Debian 13
 + `haos.tf` is my [Home Assistant Operating System](https://developers.home-assistant.io/docs/operating-system/) VM, migrated from another box.
