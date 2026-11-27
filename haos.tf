@@ -1,6 +1,7 @@
 # Home Assistant OS, moved from another box
 # Boots UEFI off its own disk, no cloud-init
 resource "libvirt_domain" "haos" {
+  provider    = libvirt.virt3
   name        = "haos"
   memory      = 4096
   memory_unit = "MiB"

@@ -15,6 +15,11 @@ provider "libvirt" {
   uri = "qemu+sshcmd://alex@virt.internal/system"
 }
 
+provider "libvirt" {
+  alias = "virt3"
+  uri   = "qemu+sshcmd://alex@virt3.internal/system"
+}
+
 # One entry per VM
 # bridge defaults to "br0"
 # pool defaults to "default"
