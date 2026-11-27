@@ -16,6 +16,11 @@ provider "libvirt" {
 }
 
 provider "libvirt" {
+  alias = "virt2"
+  uri   = "qemu+sshcmd://alex@virt2.internal/system"
+}
+
+provider "libvirt" {
   alias = "virt3"
   uri   = "qemu+sshcmd://alex@virt3.internal/system"
 }
